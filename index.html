@@ -1,0 +1,31 @@
+<h1>GUESS THE NUMBER</h1>
+<input id="one">
+<button onclick="fun()">Check</button>
+<p id="para"></p>
+<p id="para2">Your Score:10</p>
+<script>
+    var inp = document.getElementById("one")
+    var para = document.getElementById("para")
+    var para2 = document.getElementById("para2")
+    var count = 10
+     
+   var target = Math.floor(Math.random() * 10) + 1
+    console.log("Secret number:", target) 
+    function fun() {
+        var inpu = Number(inp.value)
+    if(inpu != target) {
+        count = count-1
+        para2.textContent = "Your Score:" + count
+        para.textContent = "You are wrong!"
+        if(count == 0) {
+            para2.textContent = "Game Over!"
+            alert("Game Over")
+        }
+        
+    } 
+    else {
+        para.textContent = "You are right!"
+        alert("You Won..")
+    }
+}
+</script>
