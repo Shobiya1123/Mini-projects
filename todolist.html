@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>To Do List</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background: #f7f7f7;
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        padding-top: 50px;
+    }
+    .container {
+        background: white;
+        padding: 20px;
+        border-radius: 12px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        width: 350px;
+        text-align: center;
+    }
+    h1 {
+        margin-bottom: 15px;
+        color: #4a148c;
+    }
+    input {
+        width: 70%;
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        outline: none;
+        font-size: 14px;
+    }
+    input:focus {
+        border-color: #4a148c;
+    }
+    button {
+        padding: 8px 12px;
+        margin-left: 5px;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 14px;
+        background-color: #4a148c;
+        color: white;
+        transition: 0.3s;
+    }
+    button:hover {
+        background-color: #6a1b9a;
+    }
+    ul {
+        list-style-type: none;
+        padding: 0;
+        margin-top: 20px;
+        text-align: left;
+    }
+    li {
+        background: #f0e6f7;
+        margin-bottom: 10px;
+        padding: 10px;
+        border-radius: 8px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    li button {
+        background-color: crimson;
+        font-size: 12px;
+        padding: 6px 10px;
+    }
+    li button:hover {
+        background-color: darkred;
+    }
+</style>
+</head>
+<body>
+<div class="container">
+    <h1>To Do List</h1>
+    <input id="in">
+    <button onclick="add()">Add Task</button>
+    <ul id="u"></ul>
+</div>
+
+<script>
+    var input = document.getElementById("in");
+    var unl = document.getElementById("u")
+    function add() {
+        if (input.value.trim() === "") return; // prevent empty tasks
+        var list = document.createElement("li")
+        list.innerHTML = input.value + " <button onclick='deleteItem(event)'>Delete</button>"
+        unl.append(list)
+        input.value = ""; // clear input
+    }
+    function deleteItem(event) {
+        event.target.parentElement.remove()
+    }
+</script>
+</body>
+</html>
